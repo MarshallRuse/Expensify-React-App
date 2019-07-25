@@ -10,7 +10,7 @@ export class AddExpensePage extends React.Component {
         // which allows for easier testing **
 
         // props.dispatch(addExpense(expense));
-        this.props.addExpense(addExpense(expense));
+        this.props.addExpense(expense);
 
         // history.push is used to redirect programatically.
         // this comes from components used within react-router
@@ -33,7 +33,7 @@ export class AddExpensePage extends React.Component {
 // The second argument to connect(), mapDispatchToProps, 
 // can be explicitly set so that onSubmit can be accessed by the 
 // testing functions
-const mapDispatchToProps = (expense) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addExpense: (expense) => dispatch(addExpense(expense))
     }
