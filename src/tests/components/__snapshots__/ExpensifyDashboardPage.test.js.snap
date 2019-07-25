@@ -3,5 +3,6 @@
 exports[`Should render the ExpensifyDashboardPage component 1`] = `
 <div>
   <[object Object] />
+  <[object Object] />
 </div>
 `;

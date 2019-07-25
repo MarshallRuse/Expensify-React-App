@@ -2,7 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { EditExpensePage } from '../../components/EditExpensePage';
 import expenses from '../fixtures/expenses';
-import { exportAllDeclaration } from '@babel/types';
 
 let editExpense, removeExpense, history, wrapper;
 // beforeEach is a global function provided by jest
