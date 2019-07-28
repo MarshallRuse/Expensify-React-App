@@ -6,8 +6,10 @@ exports[`Should render the ExpensesSummary component with expenses 1`] = `
     Expenses Summary
   </h2>
   <h3>
-    Your total expenses amount is: 
-    $1,141.95
+    You have 
+     
+    expenses
+     totaling 
   </h3>
 </div>
 `;
@@ -18,8 +20,10 @@ exports[`Should render the ExpensesSummary component with no expenses 1`] = `
     Expenses Summary
   </h2>
   <h3>
-    Your total expenses amount is: 
-    $0.00
+    You have 
+     
+    expenses
+     totaling 
   </h3>
 </div>
 `;

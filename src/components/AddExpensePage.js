@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ExpenseForm from './ExpenseForm';
-import { addExpense } from '../redux/actions/expenses';
+import { startAddExpense } from '../redux/actions/expenses';
 
 export class AddExpensePage extends React.Component {
 
@@ -10,7 +10,7 @@ export class AddExpensePage extends React.Component {
         // which allows for easier testing **
 
         // props.dispatch(addExpense(expense));
-        this.props.addExpense(expense);
+        this.props.startAddExpense(expense);
 
         // history.push is used to redirect programatically.
         // this comes from components used within react-router
@@ -35,7 +35,7 @@ export class AddExpensePage extends React.Component {
 // testing functions
 const mapDispatchToProps = (dispatch) => {
     return {
-        addExpense: (expense) => dispatch(addExpense(expense))
+        startAddExpense: (expense) => dispatch(startAddExpense(expense))
     }
 }
 
