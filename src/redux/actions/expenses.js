@@ -46,3 +46,28 @@ export const editExpense = (id = '', updates = {}) => ({
     id,
     updates
 })
+
+// SET EXPENSES AFTER FETCH FROM DB
+export const setExpenses = (expenses) => ({
+    type: 'SET_EXPENSES', 
+    expenses
+});
+
+// ASYNC FUNCTION FOR SETTING EXPENSES
+export const startSetExpenses = () => {
+    // redux-thunk library allows this to work, 
+    // does not with redux by default
+    return (dispatch) => {
+
+        return database.ref('expenses').once('value').then((expenses) => {
+            let expensesData = [];
+            expenses.forEach((expense) => {
+                expensesData.push({
+                    id: expense.key,
+                    ...expense.val()
+                });
+            });
+            dispatch(setExpenses(expensesData))
+        });
+    }
+}

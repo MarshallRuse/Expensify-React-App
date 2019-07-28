@@ -1,14 +1,24 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { startAddExpense, addExpense, removeExpense, editExpense } from '../../../redux/actions/expenses';
+import { startAddExpense, addExpense, removeExpense, editExpense, setExpenses, startSetExpenses } from '../../../redux/actions/expenses';
 import expenses from '../../fixtures/expenses';
 import database from '../../../firebase/firebase';
+import expensesReducer from '../../../redux/reducers/expenses';
 
 
 // Creating configuration of mock-store. Note, does not actually create
 // the mock-store, just lays the blueprints for each test case to 
 // create their own
 const createMockStore = configureMockStore([thunk]);
+
+// populate the database with some dummy expenses before each test
+beforeEach((done) => {
+    const expenseData = {};
+    expenses.forEach(({ id, description, notes, amount, createdAt }) => {
+        expenseData[id] = { description, notes, amount, createdAt };
+    });
+    database.ref('expenses').set(expenseData).then(() => done());
+});
 
 // Remove Expense
 test('Should setup remove expense action object', () => {
@@ -120,4 +130,34 @@ test('Should add expense with defaults to database and store', (done) => {
         expect(snapshot.val()).toEqual(expenseData);
         done();
     });;
+});
+
+test('Should set up SET EXPENSES action object with data', () => {
+    const action = setExpenses(expenses);
+    expect(action).toEqual({
+        type: 'SET_EXPENSES',
+        expenses
+    });
+});
+
+test('Should set expenses', () => {
+    const action = {
+        type: 'SET_EXPENSES',
+        expenses: [expenses[1]]
+    }
+    const state = expensesReducer(expenses, action);
+    expect(state).toEqual([expenses[1]]);
+});
+
+test('Should fetch the data from the database', (done) => {
+    const store = createMockStore({});
+    store.dispatch(startSetExpenses()).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'SET_EXPENSES',
+            expenses
+        });
+        done();
+    })
+
 });
