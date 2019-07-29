@@ -37,7 +37,7 @@ test('Should update ExpenseForm state with note input change', () => {
     wrapper.find('textarea').simulate('change', {
         target: { value: 'Note change'}
     });
-    expect(wrapper.state('note')).toBe('Note change');
+    expect(wrapper.state('notes')).toBe('Note change');
 });
 
 test('Should update ExpenseForm state with VALID amount input change', () => {
@@ -65,7 +65,7 @@ test('Should submit ExpenseForm with valid submission', () => {
     expect(wrapper.state('error')).toBe('');
     expect(onSubmitSpy).toHaveBeenLastCalledWith({
         description: expenses[0].description,
-        note: expenses[0].note,
+        notes: expenses[0].notes,
         amount: expenses[0].amount,
         createdAt: expenses[0].createdAt
     });

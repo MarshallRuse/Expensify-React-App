@@ -14,7 +14,7 @@ export class AddExpensePage extends React.Component {
 
         // history.push is used to redirect programatically.
         // this comes from components used within react-router
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
     }
 
     render() {
