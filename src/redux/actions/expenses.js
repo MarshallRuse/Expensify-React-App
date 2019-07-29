@@ -49,14 +49,24 @@ export const startRemoveExpense = ({ id } = {}) => {
             dispatch(removeExpense({ id }));
         });
     }
-}
+};
 
     // EDIT EXPENSE
 export const editExpense = (id = '', updates = {}) => ({
     type: 'EDIT_EXPENSE',
     id,
     updates
-})
+});
+
+export const startEditExpense = (id = '', updates = {}) => {
+    // redux-thunk library allows this to work, 
+    // does not with redux by default
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    }
+};
 
 // SET EXPENSES AFTER FETCH FROM DB
 export const setExpenses = (expenses) => ({
