@@ -1,6 +1,7 @@
 // React
 import React from 'react';
 import ReactDOM from 'react-dom';
+import LoadingPage from './components/LoadingPage';
 
 // Redux 
 import configureStore from './redux/store/configureStore';
@@ -16,6 +17,7 @@ import 'react-dates/lib/css/_datepicker.css';
 
 import AppRouter, {history} from './routers/AppRouter';
 
+// Firebase
 import { firebase } from './firebase/firebase';
 
 const store = configureStore();
@@ -28,7 +30,7 @@ const jsx = (
     </Provider>
 );
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 // for use with logging in and out, dont want to re-render whole 
 // app each time

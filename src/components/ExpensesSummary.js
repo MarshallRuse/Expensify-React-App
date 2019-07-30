@@ -4,12 +4,11 @@ import selectExpenses from '../redux/selectors/expenses';
 import selectExpensesTotal from '../redux/selectors/expenses-total';
 
 export const ExpensesSummary = ({expensesCount, expensesTotal}) => {
-    const expenseWord = expensesCount === 1 ? 'expense' : 'expenses';
+    const expenseWord = expensesCount === 1 ? ' expense' : ' expenses';
 
     return (
     <div>
-        <h2>Expenses Summary</h2>
-        <h3>You have {expensesCount} {expenseWord} totaling {expensesTotal}</h3>
+        <h1 className='page-header__title'>You have <span>{expensesCount}</span>{expenseWord} totaling <span>{expensesTotal}</span></h1>
     </div>
 )}
 

@@ -2,7 +2,25 @@
 
 exports[`Should render the ExpensifyDashboardPage component 1`] = `
 <div>
-  <[object Object] />
+  <div
+    className="page-header"
+  >
+    <div
+      className="content-container"
+    >
+      <[object Object] />
+      <div
+        className="page-header__actions"
+      >
+        <Link
+          className="button"
+          to="/create"
+        >
+          Add Expense
+        </Link>
+      </div>
+    </div>
+  </div>
   <[object Object] />
 </div>
 `;
